@@ -1,9 +1,12 @@
 const { User } = require('../models/User');
 const bcrypt = require('bcrypt');
 
-async function register(email, password) {
+const identityKey = 'email';
+
+async function register(identity, password) {
     
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ [identityKey]: identity }); 
+    // { [identityKey]: identity } - dinamically set the key of the object
 
     if (user) {
         throw new Error('Email is already taken');
@@ -21,9 +24,9 @@ async function register(email, password) {
     return newUser;
 }
 
-async function login(email, password) {
+async function login(identity, password) {
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ [identityKey]: identity });
     if (!user) {
         throw new Error('Incorrect username or password');
     }
