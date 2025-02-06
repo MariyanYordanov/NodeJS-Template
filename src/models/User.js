@@ -13,9 +13,9 @@ const userSchema = new Schema({
     },
 },
 {
-    collation: {
-        locale: 'en', 
-        strength: 2 
+    collation: {       // to make case-insensitive search
+        locale: 'us',  // use US English collation
+        strength: 2    // compare base characters only
     }
 }); 
 
