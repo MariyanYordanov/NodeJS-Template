@@ -18,5 +18,16 @@ async function start() {
 
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
+    testFunction();
   });
+}
+
+async function testFunction() {
+  try{
+    const result = await login('Ana', '1234');
+  } catch (err) {
+    console.log('Error:');
+    console.log(err.message);
+    console.log('Error:', err.message);
+  }
 }
