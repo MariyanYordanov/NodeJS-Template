@@ -1,15 +1,15 @@
 const { User } = require('../models/User');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+
 const identityKey = 'email';
 
 async function register(identity, password) {
     
-    const user = await User.findOne({ [identityKey]: identity }); 
     // { [identityKey]: identity } - dinamically set the key of the object
+    const user = await User.findOne({ [identityKey]: identity }); 
 
     if (user) {
-        throw new Error(`This user ${identity} is already registered`);
+        throw new Error(`This user ${identityKey} is already registered`);
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

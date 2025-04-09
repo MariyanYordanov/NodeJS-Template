@@ -1,8 +1,8 @@
 const { homeRouter } = require('../controllers/home');
 
-function configureRoutes(app) {
+function configRoutes(app) {
     app.use(homeRouter);
     //TODO add routes
 }
 
-module.exports = { configureRoutes };
+module.exports = { configRoutes };
